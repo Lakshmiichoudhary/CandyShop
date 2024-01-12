@@ -1,12 +1,12 @@
 import CartIcon from "../Cart/Carticon";
 
-const CartButton = () => {
+const CartButton = ({ onClick, cartItemCount }) => {
     return (
-        <button className="class" >
-            <CartIcon />
-            <spam className="ele">Cart</spam>
-            <spam className="ele">0</spam>
-        </button>
+      <button onClick={onClick}>
+        <CartIcon />
+        <span className="mx-1">Cart</span>
+        <span className="mx-1">{cartItemCount}</span>
+      </button>
     )
 }
 

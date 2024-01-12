@@ -1,15 +1,28 @@
-import From from './Component/Form'
+import { useState } from 'react';
+import Cart from './Component/Cart/Cart'
 import Header from './Component/Header/Header'
-import './App.css'
+import MainBody from './Component/MainBody'
+import { CartProvider } from './Context/cartContext'
 
 function App() {
-  
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
+  const toggleCart = () => {
+    setIsCartOpen(!isCartOpen);
+  };
+
+  const closeCart = () => {
+    setIsCartOpen(false);
+  };
+
+  
   return (
-    <>
-      <Header/>
-      <From />
-    </>
+    <CartProvider>
+      <Header toggleCart={toggleCart}/>
+      {isCartOpen && <Cart onClose={closeCart} />}
+      <MainBody />
+      
+    </CartProvider>
   )
 }
 
